@@ -1,7 +1,18 @@
 ## SafeAreaHelper
-### (@eddiecameron / eddiecameron.fun)
+#### (@eddiecameron / eddiecameron.fun)
 
 This is a simple helper to let you emulate the iPhoneX+ safe area in the editor, as well as a helper tool to auto adjust a canvas to fit within the safe area rather than the whole screen
+
+### How Get
+Add to your project's package dependencies. Open `Your Project/Packages/manifest.json` and add to the list
+```
+{
+  "dependencies": {
+        ...,
+        "com.eddiecameron.safeareahelper": "https://github.com/EddieCameron/UnitySafeAreaHelper.git"
+    }
+}
+```
 
 ### How Use
 Mostly, just toggle the emulation in Tools > Safe Area Helper > Toggle Editor Safe Area.
