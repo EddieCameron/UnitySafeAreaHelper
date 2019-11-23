@@ -1,0 +1,16 @@
+{
+    "name": "SafeAreaHelperEditor",
+    "references": [
+        "GUID:cfa4395a263da41fb93e088231ed6c79"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

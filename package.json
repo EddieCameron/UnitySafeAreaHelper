@@ -1,0 +1,14 @@
+{
+    "name": "com.eddiecameron.safeareahelper",
+    "version": "2.0.0",
+    "displayName": "Safe Area Helper",
+    "description": "Show safe area in editor and auto adjust canvases",
+   "keywords": [
+       "Boring things"
+    ],
+    "author": {
+      "name": "Eddie Cameron",
+      "email": "eddie@eddiecameron.fun",
+      "url": "https://eddiecameron.fun"
+    }
+  }
