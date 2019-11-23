@@ -17,10 +17,29 @@ namespace SafeAreaHelper {
 #if UNITY_EDITOR
             if ( IsEditorSafeAreaEmulationOn ) {
                 // return fake safe area rect
-                return new Rect( 0, 0.04187192118f * Screen.height, Screen.width, 0.9039408867f * Screen.height );
+                if ( IsLandscape ) {
+                    return new Rect( 0.04187192118f * Screen.width, 0, 0.9039408867f * Screen.width, Screen.height );
+                }
+                else {
+                    return new Rect( 0, 0.04187192118f * Screen.height, Screen.width, 0.9039408867f * Screen.height );
+                }
             }
 #endif
             return Screen.safeArea;
+        }
+
+        public static bool IsLandscape {
+            get {
+#if UNITY_EDITOR
+                string[] res = UnityEditor.UnityStats.screenRes.Split( 'x' );
+                int width = int.Parse( res[0] );
+                int height = int.Parse( res[1] );
+
+                return width > height;
+#else
+                return Screen.width > Screen.height;
+#endif
+            }
         }
 
 #if UNITY_EDITOR

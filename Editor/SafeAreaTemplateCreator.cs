@@ -13,18 +13,26 @@ using Random = UnityEngine.Random;
 namespace SafeAreaHelper {
     [InitializeOnLoad]
     public static class SafeAreaTemplateCreator {
-        private const string _SAFE_AREA_PREFAB_NAME = "SafeAreaTemplateCanvas";
+        private const string _SAFE_AREA_PREFAB_NAME_PORTRAIT = "SafeAreaTemplateCanvasPortrait";
+        private const string _SAFE_AREA_PREFAB_NAME_LANDSCAPE = "SafeAreaTemplateCanvasLandscape";
         private static GameObject _templateInstance;
+        private static bool _templateIsLandscape;
 
         static SafeAreaTemplateCreator() {
             EditorApplication.update += CheckTemplate;
         }
 
         static void CheckTemplate() {
-            if ( Helper.IsEditorSafeAreaEmulationOn ) {
-                if ( _templateInstance == null ) {
-                    var safeAreaTemplatePrefab = Resources.Load( _SAFE_AREA_PREFAB_NAME );
+            if ( Helper.IsEditorSafeAreaEmulationOn ) { 
+                bool isLandscape = Helper.IsLandscape;
+                if ( _templateInstance == null || isLandscape != _templateIsLandscape ) {
+
+                    if ( _templateInstance != null )
+                        GameObject.DestroyImmediate( _templateInstance );
+
+                    var safeAreaTemplatePrefab = Resources.Load( isLandscape ? _SAFE_AREA_PREFAB_NAME_LANDSCAPE : _SAFE_AREA_PREFAB_NAME_PORTRAIT );
                     _templateInstance = (GameObject)GameObject.Instantiate( safeAreaTemplatePrefab );
+                    _templateIsLandscape = isLandscape;
                     _templateInstance.hideFlags = HideFlags.HideAndDontSave;
                     if ( EditorApplication.isPlayingOrWillChangePlaymode )
                         GameObject.DontDestroyOnLoad( _templateInstance );
